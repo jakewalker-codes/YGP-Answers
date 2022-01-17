@@ -10,8 +10,8 @@ FROM SalesLT.Customer
 ;
 -- Question 2
 SELECT TOP 1
-   Left(FirstName,1)	AS 'First Name Initial',
-   Count(*)				AS 'Initial Count'
+   Left(FirstName,1) AS 'First Name Initial',
+   Count(*) AS 'Initial Count'
 FROM SalesLT.Customer
 GROUP BY left(Customer.FirstName,1)
 ORDER BY 'Initial Count' DESC
@@ -19,11 +19,11 @@ ORDER BY 'Initial Count' DESC
 
 -- Question 3
 SELECT 
-    Cst.CompanyName	AS 'Company Name',
-    Adr.AddressID	AS 'Address ID'
-FROM SalesLT.Customer			AS Cst
-JOIN SalesLT.CustomerAddress	AS CstAdr	ON CstAdr.CustomerID = Cst.CustomerID
-JOIN SalesLT.Address			AS Adr		ON CstAdr.AddressID = Adr.AddressID
+    Cst.CompanyName AS 'Company Name',
+    Adr.AddressID AS 'Address ID'
+FROM SalesLT.Customer AS Cst
+JOIN SalesLT.CustomerAddress AS CstAdr	ON CstAdr.CustomerID = Cst.CustomerID
+JOIN SalesLT.Address AS Adr ON CstAdr.AddressID = Adr.AddressID
 WHERE Cst.CompanyName = 'Family''s Favorite Bike Shop'
 AND CstAdr.AddressType = 'Shipping'
 ;
@@ -43,8 +43,8 @@ GetMainOfficePostalCode AS (
 	SELECT 
 		CstAdr.CustomerID,
 		Adr.PostalCode
-	FROM SalesLT.CustomerAddress	AS CstAdr
-	JOIN SalesLT.Address			AS Adr		ON CstAdr.AddressID = Adr.AddressID
+	FROM SalesLT.CustomerAddress AS CstAdr
+	JOIN SalesLT.Address AS Adr ON CstAdr.AddressID = Adr.AddressID
 	WHERE CstAdr.AddressType = 'Main Office'
 )
 SELECT PostalCode AS [Postal Code] 
